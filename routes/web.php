@@ -42,8 +42,9 @@ Route::get('/grabaciones/{nombre}',function($nombre){
     la aplicacion y arroja lo que le hayamos pasado de parametro a la funcion
     dd($nombre);
     */
-    //Compact permite enviar variables a las vistas, las variables son envias 
-    //como cadenas
-    return view('paginas.grabaciones',compact('nombre'));
+    /*
+    Concatenando metodos para pasar parametros
+    */
+    return view('paginas.grabaciones') -> with(['nombre' => $nombre]);
 });
 
