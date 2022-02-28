@@ -14,7 +14,6 @@
     plantilla de blade que equivale a abrir el codigo de php y
     realizar un echo
     -->
-    <h1>Grabaciones de {{ $nombre }}</h1>
-    {{ $otra }}
+    <h1>Grabaciones de {{ $nombre }} del año {{ $year }}</h1>
 </body>
 </html>
