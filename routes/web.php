@@ -26,10 +26,6 @@ Route::get('/hola-mundo',function(){
 Route::get('/hola-mundo',function(){
     return view('paginas/hola-mundo');
 });
-/*
-{yer?} indica que un parametro es opcional, pero el parametro al ser opcional, 
-se le tiene que indicar un valor por default por si en la url no es incluido.
-*/
 
 Route::get('/grabaciones/{nombre}/{year?}',function($nombre, $year = null){
     return view('paginas.grabaciones', compact('nombre', 'year'));
