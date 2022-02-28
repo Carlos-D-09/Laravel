@@ -27,24 +27,9 @@ Route::get('/hola-mundo',function(){
     return view('paginas/hola-mundo');
 });
 
-Route::get('/grabaciones',function(){
-    return view('paginas.grabaciones');
-});
-/*
-Al abrir llaves dentro de la ruta, le decimos que esperamos que 
-un parametro cualquiera y que dicho parametro lo almacenemos en 
-una variable, en este caso nombre, dicho parametro se tiene que 
-utilizar en la funcion
-*/
 Route::get('/grabaciones/{nombre}',function($nombre){
-    /*
-    dd (die done), Es un metodo de Laravel que mata la ejecucion de 
-    la aplicacion y arroja lo que le hayamos pasado de parametro a la funcion
-    dd($nombre);
-    */
-    /*
-    Concatenando metodos para pasar parametros
-    */
-    return view('paginas.grabaciones') -> with(['nombre' => $nombre]);
+    $otra = 'mi otra variable';
+    return view('paginas.grabaciones', compact('nombre', 'otra'));
 });
 
+//minuto 43

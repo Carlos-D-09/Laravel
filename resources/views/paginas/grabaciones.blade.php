@@ -15,5 +15,6 @@
     realizar un echo
     -->
     <h1>Grabaciones de {{ $nombre }}</h1>
+    {{ $otra }}
 </body>
 </html>
