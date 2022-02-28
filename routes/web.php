@@ -18,5 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Crea las rutas para un CRUD estandar
-Route::resource('/tarea', TareaController::class);
+//Crea ruta para retornar un msg
+Route::get('/hola-mundo',function(){
+    return 'Hola Mundo';
+});
+// Crear una ruta para retornar una vista
+Route::get('/hola-mundo',function(){
+    return view('paginas/hola-mundo');
+});
+//Por cuestiones de comprension, el nombre de la ruta y la vista
+//seran el mismo
+Route::get('/grabaciones',function(){
+    return view('paginas.grabaciones');
+});
+
