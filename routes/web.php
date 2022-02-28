@@ -26,9 +26,24 @@ Route::get('/hola-mundo',function(){
 Route::get('/hola-mundo',function(){
     return view('paginas/hola-mundo');
 });
-//Por cuestiones de comprension, el nombre de la ruta y la vista
-//seran el mismo
+
 Route::get('/grabaciones',function(){
     return view('paginas.grabaciones');
+});
+/*
+Al abrir llaves dentro de la ruta, le decimos que esperamos que 
+un parametro cualquiera y que dicho parametro lo almacenemos en 
+una variable, en este caso nombre, dicho parametro se tiene que 
+utilizar en la funcion
+*/
+Route::get('/grabaciones/{nombre}',function($nombre){
+    /*
+    dd (die done), Es un metodo de Laravel que mata la ejecucion de 
+    la aplicacion y arroja lo que le hayamos pasado de parametro a la funcion
+    dd($nombre);
+    */
+    //Compact permite enviar variables a las vistas, las variables son envias 
+    //como cadenas
+    return view('paginas.grabaciones',compact('nombre'));
 });
 
