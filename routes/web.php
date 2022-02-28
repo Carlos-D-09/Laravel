@@ -27,8 +27,8 @@ Route::get('/hola-mundo',function(){
     return view('paginas/hola-mundo');
 });
 
-Route::get('/grabaciones/{nombre}/{year?}',function($nombre, $year = null){
-    return view('paginas.grabaciones', compact('nombre', 'year'));
+Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year = null, $cantidad = null){
+    return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
 
 //minuto 43

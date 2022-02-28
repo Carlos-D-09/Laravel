@@ -15,5 +15,13 @@
             De todos los tiempos
         @endif
     </h2>
+    <p>
+    <ol>
+        @if(isset($cantidad))
+            @for($x = 0; $x < $cantidad; $x++)
+                <li>Algun texto</li>
+            @endfor
+        @endif
+    </ol>
 </body>
 </html>
