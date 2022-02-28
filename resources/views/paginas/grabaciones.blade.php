@@ -9,16 +9,10 @@
 <body>
     <h1>Grabaciones de {{ $nombre }}</h1>
     <h2>
-        <!-- Sintaxis php
-        <?php 
-            if($year){
-                echo 'Año ' . $year;
-            }
-        ?>
-        -->
-        <!-- sintaxis blade-->
         @if(isset($year))
             Año {{ $year }}
+        @else
+            De todos los tiempos
         @endif
     </h2>
 </body>
