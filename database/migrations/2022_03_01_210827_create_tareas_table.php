@@ -18,7 +18,6 @@ class CreateTareasTable extends Migration
             $table->string('tarea', 50);
             $table->text('descripcion');
             $table->string('tipo', 50);
-            $table->timestamps();
         });
     }
 
