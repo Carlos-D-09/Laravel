@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,13 @@ Route::get('/hola-mundo',function(){
 // Crear una ruta para retornar una vista
 Route::get('/hola-mundo',function(){
     return view('paginas/hola-mundo');
+});
+
+Route::get('/tareas',function(){
+    $tareas = DB::table('tareas')->get();
+    // dd($tareas);
+    //la función compact permite pasar variables a la pagina hacia la cual estamos siendo reedirigidos
+    return view('tareas.index-tareas',compact('tareas'));
 });
 
 Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year = null, $cantidad = null){
