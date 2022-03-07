@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\TareasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -26,15 +28,12 @@ Route::get('/hola-mundo',function(){
     return view('paginas/hola-mundo');
 });
 
-Route::get('/tareas',function(){
-    $tareas = DB::table('tareas')->get();
-    // dd($tareas);
-    //la función compact permite pasar variables a la pagina hacia la cual estamos siendo reedirigidos
-    return view('tareas.index-tareas',compact('tareas'));
-});
+Route::get('/tareas', [TareasController::class, 'index']);
+
+Route::get('tarea/create', [TareasController::class, 'create']);
+
+Route::post('tarea/store', [TareasController::class, 'store']);
 
 Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year = null, $cantidad = null){
     return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
-
-//minuto 42
