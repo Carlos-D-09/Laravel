@@ -29,4 +29,4 @@ Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year =
     return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
 
-//minuto 
+//minuto 42
