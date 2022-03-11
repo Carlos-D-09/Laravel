@@ -8,26 +8,35 @@
 </head>
 <body>
     <h1>Agregar Tarea</h1>
-    @if ($errors->any())
-        <div classs = "alert alert-danger">
-            <ul>
-                @foreach ( $errors->all() as $error)
-                    <li> {{ $error}} </li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="/tarea" method = "POST">
         @csrf
         <label for="tarea">Nombre de la tarea: </label><br>
         <input type="text" name = "tarea"></input><br>
+        @error('tarea')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        @enderror
+        <br>
         <label for="descripcion">Descripcion: </label><br>
         <textarea name="descripcion" id="descripcion" cols="10" rows="5"></textarea><br>
+        @error('descripcion')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        @enderror
+        <br>
         <label for="categoria">Categoria</label><br>
         <select name="categoria" id="categoria">
             <option value="Escuela">Escuela</option>
             <option value="Trabajo">Trabajo</option>
         </select><br>
+        @error('descripcion')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        @enderror
+        <br>
         <br> <input type="submit" value="Guardar">
     </form>
 </body>
