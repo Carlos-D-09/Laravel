@@ -8,6 +8,15 @@
 </head>
 <body>
     <h1>Agregar Tarea</h1>
+    @if ($errors->any())
+        <div classs = "alert alert-danger">
+            <ul>
+                @foreach ( $errors->all() as $error)
+                    <li> {{ $error}} </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="/tarea" method = "POST">
         @csrf
         <label for="tarea">Nombre de la tarea: </label><br>

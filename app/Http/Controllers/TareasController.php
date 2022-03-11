@@ -36,14 +36,16 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        //Creo un objeto de la clase tarea (Recordando que tarea representa a la tabla tarea de la bd)
+        $validated = $request->validate([
+            'tarea' => 'required|min:255|max:255',
+            'descripcion' => 'required|min:255|max:255',
+            'categoria' => ['required','max:255', 'min:255'],
+
+        ]);
         $tarea = new Tarea();
-        //Asigno valores a las propiedades del objeto, que serian los atributos de la tabla tarea
         $tarea->tarea = $request->tarea;
         $tarea->descripcion = $request->descripcion;
         $tarea->tipo = $request->categoria;
-        //Guardo el nuevo registro
         $tarea->save();
 
         return redirect('/tarea');
