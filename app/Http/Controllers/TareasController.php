@@ -14,7 +14,8 @@ class TareasController extends Controller
      */
     public function index()
     {
-        //
+        $tareas = Tarea::all();
+        return view ('tareas.indexTareas', compact('tareas'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TareasController extends Controller
      */
     public function create()
     {
-        //
+        return view('tareas.formTareas');
     }
 
     /**
@@ -35,7 +36,17 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        //Creo un objeto de la clase tarea (Recordando que tarea representa a la tabla tarea de la bd)
+        $tarea = new Tarea();
+        //Asigno valores a las propiedades del objeto, que serian los atributos de la tabla tarea
+        $tarea->tarea = $request->tarea;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->tipo = $request->categoria;
+        //Guardo el nuevo registro
+        $tarea->save();
+
+        return redirect('/tarea');
     }
 
     /**

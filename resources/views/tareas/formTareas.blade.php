@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Agregar Tarea</h1>
-    <form action="/tarea/store" method = "POST">
+    <form action="/tarea" method = "POST">
+        @csrf
         <label for="tarea">Nombre de la tarea: </label><br>
         <input type="text" name = "tarea"></input><br>
         <label for="descripcion">Descripcion: </label><br>
@@ -17,7 +18,8 @@
         <select name="categoria" id="categoria">
             <option value="Escuela">Escuela</option>
             <option value="Trabajo">Trabajo</option>
-        </select>
+        </select><br>
+        <br> <input type="submit" value="Guardar">
     </form>
 </body>
 </html>
