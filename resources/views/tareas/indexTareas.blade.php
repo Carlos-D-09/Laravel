@@ -9,12 +9,16 @@
 </head>
 <body>
     <h1>Tareas</h1>
+    <ul>
+        <li> <a href="tarea/create">Crear Nueva Tarea</a> </li>
+    </ul>
     <table>
         <tr>
             <th>Id</th>
             <th>Tarea</th>
             <th>Descripcion</th>
             <th>Categoria</th>
+            <th>Acciones</th>
         </tr>
         @foreach ($tareas as $tarea)
             <tr>
@@ -22,6 +26,19 @@
                 <td>{{$tarea->tarea}}</td>
                 <td>{{$tarea->descripcion}}</td>
                 <td>{{$tarea->tipo}}</td>
+                <td>
+                    <form action="/tarea/{{$tarea->id}}">
+                        <button> detalle </button>
+                    </form>
+                    <form action="/tarea/{{$tarea->id}}/edit">
+                        <button> editar </button>
+                    </form>
+                    <form action="/tarea/{{$tarea->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button>eliminar</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

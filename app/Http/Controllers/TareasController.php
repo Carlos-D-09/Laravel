@@ -12,6 +12,12 @@ class TareasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $reglasValidacion = [
+        'tarea' => 'required|min:5|max:255',
+        'descripcion' => 'required|min:5|max:255',
+        'categoria' => ['required'],
+    ];
+
     public function index()
     {
         $tareas = Tarea::all();
@@ -36,12 +42,7 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'tarea' => 'required|min:255|max:255',
-            'descripcion' => 'required|min:255|max:255',
-            'categoria' => ['required','max:255', 'min:255'],
-
-        ]);
+        $request->validate($this->reglasValidacion);
         $tarea = new Tarea();
         $tarea->tarea = $request->tarea;
         $tarea->descripcion = $request->descripcion;
@@ -59,7 +60,7 @@ class TareasController extends Controller
      */
     public function show(Tarea $tarea)
     {
-        //
+        return view('tareas.showTarea', compact('tarea'));
     }
 
     /**
@@ -70,7 +71,7 @@ class TareasController extends Controller
      */
     public function edit(Tarea $tarea)
     {
-        //
+        return view('tareas.formEditTareas', compact('tarea'));
     }
 
     /**
@@ -82,7 +83,12 @@ class TareasController extends Controller
      */
     public function update(Request $request, Tarea $tarea)
     {
-        //
+        $request->validate($this->reglasValidacion);
+        $tarea->tarea = $request->tarea;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->tipo = $request->tipo;
+        $tarea->save();
+        return redirect('/tarea');
     }
 
     /**
@@ -93,6 +99,9 @@ class TareasController extends Controller
      */
     public function destroy(Tarea $tarea)
     {
-        //
+        $tarea->delete();
+        return redirect('/tarea');
     }
 }
+
+//clase del día 22 de febrero terminada

@@ -7,11 +7,12 @@
     <title>Agregar tarea</title>
 </head>
 <body>
-    <h1>Agregar Tarea</h1>
-    <form action="/tarea" method = "POST">
+    <h1>Editar Tarea</h1>
+    <form action="/tarea/{{$tarea->id}}" method = "POST">
+        @method('PATCH')
         @csrf
         <label for="tarea">Nombre de la tarea: </label><br>
-        <input type="text" name = "tarea" value = "{{old('tarea')}}"><br>
+        <input type="text" name = "tarea" value = "{{$tarea->tarea}}"><br>
         @error('tarea')
             <div class="alert alert-danger">
                 {{$message}}
@@ -19,7 +20,7 @@
         @enderror
         <br>
         <label for="descripcion">Descripcion: </label><br>
-        <textarea name="descripcion" id="descripcion" cols="10" rows="5">{{old('descripcion')}}</textarea><br>
+        <textarea name="descripcion" id="descripcion" cols="10" rows="5">{{$tarea->descripcion}}</textarea><br>
         @error('descripcion')
             <div class="alert alert-danger">
                 {{$message}}
@@ -28,10 +29,15 @@
         <br>
         <label for="tipo">Categoria</label><br>
         <select name="tipo" id="tipo">
-            <option value="Escuela" {{old('tipo') == 'Escuela'? 'selected' : ''}}>Escuela</option>
-            <option value="Trabajo" {{old('tipo') == 'Trabajo'? 'selected' : ''}}>Trabajo</option>
-            <option value="Tipo" {{old('tipo') == 'Otra'? 'selected' : ''}}>Otra..</option>
+            <option value="Escuela" {{$tarea->tipo == 'Esuela' ? 'selected': ''}}>Escuela</option>
+            <option value="Trabajo" {{$tarea->tipo == 'Trabajo' ? 'selected': ''}}>Trabajo</option>
+            <option value="Otra" {{$tarea->tipo == 'Otra' ? 'selected': ''}}>Otra...</option>
         </select><br>
+        @error('descripcion')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        @enderror
         <br>
         <br> <input type="submit" value="Guardar">
     </form>
