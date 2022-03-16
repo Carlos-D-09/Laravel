@@ -103,5 +103,3 @@ class TareasController extends Controller
         return redirect('/tarea');
     }
 }
-
-//clase del día 22 de febrero terminada

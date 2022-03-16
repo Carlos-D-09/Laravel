@@ -41,3 +41,11 @@ Route::resource('/tarea',TareasController::class);
 Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year = null, $cantidad = null){
     return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
+
+Route::get('/bienvenida', function(){
+    return view('bienvenida');
+});
+
+Route::get('/contacto', function(){
+    return view('contacto');
+});
