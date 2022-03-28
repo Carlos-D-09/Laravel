@@ -30,7 +30,7 @@
         <select name="tipo" id="tipo">
             <option value="Escuela" {{old('tipo') == 'Escuela'? 'selected' : ''}}>Escuela</option>
             <option value="Trabajo" {{old('tipo') == 'Trabajo'? 'selected' : ''}}>Trabajo</option>
-            <option value="Tipo" {{old('tipo') == 'Otra'? 'selected' : ''}}>Otra..</option>
+            <option value="Otra.. " {{old('tipo') == 'Otra'? 'selected' : ''}}>Otra..</option>
         </select><br>
         <br>
         <br> <input type="submit" value="Guardar">

@@ -15,7 +15,7 @@ class TareasController extends Controller
     private $reglasValidacion = [
         'tarea' => 'required|min:5|max:255',
         'descripcion' => 'required|min:5|max:255',
-        'categoria' => ['required'],
+        'tipo' => ['required'],
     ];
 
     public function index()
@@ -46,7 +46,7 @@ class TareasController extends Controller
         $tarea = new Tarea();
         $tarea->tarea = $request->tarea;
         $tarea->descripcion = $request->descripcion;
-        $tarea->tipo = $request->categoria;
+        $tarea->tipo = $request->tipo;
         $tarea->save();
 
         return redirect('/tarea');
