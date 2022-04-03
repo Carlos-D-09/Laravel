@@ -40,7 +40,7 @@ Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year =
     return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
 
-Route::get('/bienvenida', function(){
+Route::get('/bienvenida/info/about', function(){
     return view('bienvenida');
 });
 
