@@ -40,7 +40,7 @@ Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year =
     return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
 
-Route::get('/bienvenida/info/about', function(){
+Route::get('/bienvenida', function(){
     return view('bienvenida');
 });
 
@@ -49,7 +49,7 @@ Route::get('/contacto', function(){
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('bienvenidaUsuario');
+});
 
 require __DIR__.'/auth.php';
