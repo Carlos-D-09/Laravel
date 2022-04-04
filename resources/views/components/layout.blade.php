@@ -17,7 +17,7 @@
     <link href="{{ asset ('vendors/nprogress/nprogress.css" rel="stylesheet')}}">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset ('build/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -125,6 +125,6 @@
     <script src="{{ asset ('vendors/nprogress/nprogress.js') }}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src=" {{ asset ('build/js/custom.min.js') }}"></script>
   </body>
 </html>

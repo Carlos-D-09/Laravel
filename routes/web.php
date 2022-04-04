@@ -40,16 +40,12 @@ Route::get('/grabaciones/{nombre}/{year?}/{cantidad?}',function($nombre, $year =
     return view('paginas.grabaciones', compact('nombre', 'year', 'cantidad'));
 });
 
-Route::get('/bienvenida', function(){
-    return view('bienvenida');
-});
-
 Route::get('/contacto', function(){
     return view('contacto');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('bienvenidaUsuario');
-});
+})->middleware('auth');
 
 require __DIR__.'/auth.php';

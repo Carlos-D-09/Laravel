@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TareasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('auth')->except('index', 'show');
+        // $this->middleware('auth')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
