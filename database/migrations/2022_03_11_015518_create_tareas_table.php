@@ -16,6 +16,7 @@ class CreateTareasTable extends Migration
     {
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('tarea', 50);
             $table->text('descripcion');
             $table->string('tipo', 50);
