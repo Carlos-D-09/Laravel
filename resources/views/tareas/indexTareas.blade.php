@@ -15,6 +15,7 @@
     <table>
         <tr>
             <th>Id</th>
+            <th>Usuario</th>
             <th>Tarea</th>
             <th>Descripcion</th>
             <th>Categoria</th>
@@ -23,6 +24,7 @@
         @foreach ($tareas as $tarea)
             <tr>
                 <td>{{$tarea->id}}</td>
+                <td>{{$tarea->user->name}}</td>
                 <td>{{$tarea->tarea}}</td>
                 <td>{{$tarea->descripcion}}</td>
                 <td>{{$tarea->tipo}}</td>

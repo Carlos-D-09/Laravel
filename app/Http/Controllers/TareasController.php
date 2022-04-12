@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TareasController extends Controller
 {
@@ -50,6 +51,7 @@ class TareasController extends Controller
     {
         $request->validate($this->reglasValidacion);
         $tarea = new Tarea();
+        $tarea->user_id = Auth::id();
         $tarea->tarea = $request->tarea;
         $tarea->descripcion = $request->descripcion;
         $tarea->tipo = $request->tipo;
