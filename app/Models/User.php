@@ -13,4 +13,10 @@ class User extends Model implements AuthAuthenticatable
     use Authenticatable;
     protected $fillable = ['name', 'email', 'password'];
     public $timestamps = false;
+    public function tarea()
+    {
+        //La instancia de este usuario tiene multiples
+        //instancias de tereas
+        return $this->hasMany(Tarea::class);
+    }
 }
