@@ -14,6 +14,7 @@ class Tarea extends Model
     {
         //La instnacia de esta tarea pertenece a un solo
         //usuario
+        
         return $this->belongsTo(User::class);
     }
 }

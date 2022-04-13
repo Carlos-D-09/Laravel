@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tarea;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,12 +53,22 @@ class TareasController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->reglasValidacion);
+        // Metodo manual
+        // $tarea = new Tarea();
+        // $tarea->user_id = Auth::id();
+        // $tarea->tarea = $request->tarea;
+        // $tarea->descripcion = $request->descripcion;
+        // $tarea->tipo = $request->tipo;
+        // $tarea->save();
+
+        //Metodo save de Eloquent
         $tarea = new Tarea();
-        $tarea->user_id = Auth::id();
         $tarea->tarea = $request->tarea;
         $tarea->descripcion = $request->descripcion;
         $tarea->tipo = $request->tipo;
-        $tarea->save();
+
+        $user = Auth::user();
+        $user->tarea()->save($tarea);
 
         return redirect('/tarea');
     }
