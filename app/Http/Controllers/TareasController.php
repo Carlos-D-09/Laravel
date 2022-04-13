@@ -27,7 +27,9 @@ class TareasController extends Controller
 
     public function index()
     {
-        $tareas = Tarea::all();
+        // $tareas = Tarea::all();
+        // $tareas = Auth::user()->tarea()->where('column', 'val')->get();
+        $tareas = Auth::user()->tarea;
         return view ('tareas.indexTareas', compact('tareas'));
     }
 

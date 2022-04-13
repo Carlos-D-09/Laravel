@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>Tarea </h1>
+    <h2>Usuario: {{ $tarea->user->name}}</h2>
     <ul>
         <li> <a href="../tarea">Mostrar Tareas</a> </li>
     </ul>
