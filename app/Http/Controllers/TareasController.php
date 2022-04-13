@@ -73,7 +73,7 @@ class TareasController extends Controller
         $request->merge([
             'user_id' => Auth::id(),
         ]);
-        $tarea = Tarea::create($request->all());
+        Tarea::create($request->all());
 
         return redirect('/tarea');
     }
@@ -110,10 +110,14 @@ class TareasController extends Controller
     public function update(Request $request, Tarea $tarea)
     {
         $request->validate($this->reglasValidacion);
-        $tarea->tarea = $request->tarea;
-        $tarea->descripcion = $request->descripcion;
-        $tarea->tipo = $request->tipo;
-        $tarea->save();
+        // Metodo manual
+        // $tarea->tarea = $request->tarea;
+        // $tarea->descripcion = $request->descripcion;
+        // $tarea->tipo = $request->tipo;
+        // $tarea->save();
+
+        Tarea::where('id', $tarea->id)->update($request->except('_method','_token'));
+
         return redirect('/tarea');
     }
 
