@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etiqueta;
 use App\Models\Tarea;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class TareasController extends Controller
         'tarea' => 'required|min:5|max:255',
         'descripcion' => 'required|min:5|max:255',
         'tipo' => ['required'],
+        'etiqueta_id' => 'required',
     ];
 
     public function index()
@@ -41,7 +43,8 @@ class TareasController extends Controller
      */
     public function create()
     {
-        return view('tareas.formTareas');
+        $etiquetas = Etiqueta::all();
+        return view('tareas.formTareas', compact('etiquetas'));
     }
 
     /**
@@ -73,8 +76,8 @@ class TareasController extends Controller
         $request->merge([
             'user_id' => Auth::id(),
         ]);
-        Tarea::create($request->all());
-
+        $tarea = Tarea::create($request->all());
+        $tarea->etiquetas()->attach($request->etiqueta_id);
         return redirect('/tarea');
     }
 
@@ -97,7 +100,8 @@ class TareasController extends Controller
      */
     public function edit(Tarea $tarea)
     {
-        return view('tareas.formEditTareas', compact('tarea'));
+        $etiquetas = Etiqueta::all();
+        return view('tareas.formEditTareas', compact('tarea', 'etiquetas'));
     }
 
     /**

@@ -18,7 +18,8 @@
             <th>Usuario</th>
             <th>Tarea</th>
             <th>Descripcion</th>
-            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Etiquetas</th>
             <th>Acciones</th>
         </tr>
         @foreach ($tareas as $tarea)
@@ -28,6 +29,11 @@
                 <td>{{$tarea->tarea}}</td>
                 <td>{{$tarea->descripcion}}</td>
                 <td>{{$tarea->tipo}}</td>
+                <td>
+                    @foreach($tarea->etiquetas as $etiqueta)
+                        {{$etiqueta->etiqueta}}
+                    @endforeach
+                </td>
                 <td>
                     <form action="/tarea/{{$tarea->id}}">
                         <button> detalle </button>

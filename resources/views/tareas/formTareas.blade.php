@@ -33,6 +33,13 @@
             <option value="Otra.. " {{old('tipo') == 'Otra'? 'selected' : ''}}>Otra..</option>
         </select><br>
         <br>
+        <label for="etiqueta_id">Etiqueta</label>
+        <select name="etiqueta_id[]">
+            @foreach($etiquetas as $etiqueta)
+                <option value="{{$etiqueta->id}}" {{isset($tarea) && array_search($etiqueta->id, $tarea->etiquetas->pluck('id')->$request->toArray()) !== false ? 'selected' : ''}}>{{$etiqueta->etiqueta}}</option>
+            @endforeach
+        </select>
+        <br>
         <br> <input type="submit" value="Guardar">
     </form>
 </body>
