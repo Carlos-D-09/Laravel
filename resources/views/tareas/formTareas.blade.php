@@ -34,9 +34,9 @@
         </select><br>
         <br>
         <label for="etiqueta_id">Etiqueta</label>
-        <select name="etiqueta_id[]">
+        <select name="etiqueta_id[]" multiple>
             @foreach($etiquetas as $etiqueta)
-                <option value="{{$etiqueta->id}}" {{isset($tarea) && array_search($etiqueta->id, $tarea->etiquetas->pluck('id')->$request->toArray()) !== false ? 'selected' : ''}}>{{$etiqueta->etiqueta}}</option>
+                <option value="{{$etiqueta->id}}">{{$etiqueta->etiqueta}}</option>
             @endforeach
         </select>
         <br>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregar tarea</title>
+    <title>Editar tarea</title>
 </head>
 <body>
     <h1>Editar Tarea</h1>
@@ -39,6 +39,21 @@
             </div>
         @enderror
         <br>
+        <label for="etiqueta_id">Etiqueta</label>
+        <select name="etiqueta_id[]" multiple>
+            @foreach($etiquetas as $etiqueta)
+                {{-- En caso de tener los formularios de edit y crear en un solo archivo: <option value="{{$etiqueta->id}}" {{isset($tarea) && array_search($etiqueta->id, $tarea->etiquetas->pluck('id')->$request->toArray()) !== false ? 'selected' : ''}}>{{$etiqueta->etiqueta}}</option> --}}
+
+                {{-- array_search(LoQueBusco, EnDondeLoBusco), retorna falso si no encuentra nada, retorna el valor que se busca en caso de encontrarlo --}}
+                {{-- Pluck rescata una colecció de todos los valores de una columna de una tabla de la base de datos --}}
+                <option value="{{$etiqueta->id}}" {{array_search($etiqueta->id, $tarea->etiquetas->pluck('id')->toArray()) !== false ? 'selected' : ''}}>{{$etiqueta->etiqueta}}</option>
+            @endforeach
+        </select><br>
+        @error('descripcion')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        @enderror
         <br> <input type="submit" value="Guardar">
     </form>
 </body>

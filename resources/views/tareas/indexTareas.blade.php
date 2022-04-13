@@ -31,7 +31,7 @@
                 <td>{{$tarea->tipo}}</td>
                 <td>
                     @foreach($tarea->etiquetas as $etiqueta)
-                        {{$etiqueta->etiqueta}}
+                        {{$etiqueta->etiqueta}} <br>
                     @endforeach
                 </td>
                 <td>

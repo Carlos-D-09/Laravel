@@ -32,7 +32,8 @@ class TareasController extends Controller
     {
         // $tareas = Tarea::all();
         // $tareas = Auth::user()->tarea()->where('column', 'val')->get();
-        $tareas = Auth::user()->tarea;
+        $tareas = Tarea::with('user')->with('etiquetas')->get();
+        //$tarea = Tarea::with('user', 'etiquetas')->get();
         return view ('tareas.indexTareas', compact('tareas'));
     }
 
@@ -120,8 +121,9 @@ class TareasController extends Controller
         // $tarea->tipo = $request->tipo;
         // $tarea->save();
 
-        Tarea::where('id', $tarea->id)->update($request->except('_method','_token'));
-
+        Tarea::where('id', $tarea->id)->update($request->except('_method','_token','etiqueta_id'));
+        //El método sync compara los elementos que se estan recibiendo con los que se tenian y se eliman los que no concuerden entre el nuevo y el viejo
+        $tarea->etiquetas()->sync($request->etiqueta_id);
         return redirect('/tarea');
     }
 
