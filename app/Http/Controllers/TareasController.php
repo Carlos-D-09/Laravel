@@ -32,7 +32,7 @@ class TareasController extends Controller
     {
         // $tareas = Tarea::all();
         // $tareas = Auth::user()->tarea()->where('column', 'val')->get();
-        $tareas = Tarea::with('user')->with('etiquetas')->get();
+        $tareas = Tarea::with('user:id,name,email')->with('etiquetas')->get();
         //$tarea = Tarea::with('user', 'etiquetas')->get();
         return view ('tareas.indexTareas', compact('tareas'));
     }
