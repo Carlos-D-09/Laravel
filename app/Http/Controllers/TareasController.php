@@ -62,13 +62,18 @@ class TareasController extends Controller
         // $tarea->save();
 
         //Metodo save de Eloquent
-        $tarea = new Tarea();
-        $tarea->tarea = $request->tarea;
-        $tarea->descripcion = $request->descripcion;
-        $tarea->tipo = $request->tipo;
+        // $tarea = new Tarea();
+        // $tarea->tarea = $request->tarea;
+        // $tarea->descripcion = $request->descripcion;
+        // $tarea->tipo = $request->tipo;
 
-        $user = Auth::user();
-        $user->tarea()->save($tarea);
+        // $user = Auth::user();
+        // $user->tarea()->save($tarea);
+
+        $request->merge([
+            'user_id' => Auth::id(),
+        ]);
+        $tarea = Tarea::create($request->all());
 
         return redirect('/tarea');
     }

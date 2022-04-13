@@ -9,12 +9,12 @@ class Tarea extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
+    protected $fillable = ['user_id', 'tarea', 'descripcion', 'tipo'];
     public function user()
     {
         //La instnacia de esta tarea pertenece a un solo
         //usuario
-        
+
         return $this->belongsTo(User::class);
     }
 }
