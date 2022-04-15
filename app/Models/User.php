@@ -13,6 +13,11 @@ class User extends Model implements AuthAuthenticatable
     use Authenticatable;
     protected $fillable = ['name', 'email', 'password'];
     public $timestamps = false;
+
+    protected function getNombreCorreoAttribute(){
+        return $this->name . '(' . $this->email . ')';
+    }
+
     public function tarea()
     {
         //La instancia de este usuario tiene multiples

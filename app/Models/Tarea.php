@@ -10,6 +10,17 @@ class Tarea extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = ['user_id', 'tarea', 'descripcion', 'tipo'];
+
+    // protected function getTareaAttribute($value)
+    // {
+    //     return strtoupper($value);
+    // }
+
+    protected function setTareaAttribute($value)
+    {
+        $this->attributes['tarea'] = strtolower($value);
+    }
+
     public function user()
     {
         //La instnacia de esta tarea pertenece a un solo
